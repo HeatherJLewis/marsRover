@@ -1,0 +1,24 @@
+{
+  "name": "marsRover",
+  "version": "1.0.0",
+  "description": "Mars Rover Project for Bootcamp 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeatherJLewis/marsRover.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeatherJLewis/marsRover/issues"
+  },
+  "homepage": "https://github.com/HeatherJLewis/marsRover#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
