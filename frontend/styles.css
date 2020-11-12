@@ -16,3 +16,20 @@ img {
 h3 {
     text-align: center;
 }
+
+.form-input {
+    padding: 10px
+}
+
+.login {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid grey;
+    background-color: lightgrey;
+}
+
+button {
+    margin: 20px;
+}
