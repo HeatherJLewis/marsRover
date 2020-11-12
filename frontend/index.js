@@ -19,6 +19,14 @@ const addTimeZoneDifference = () => {
                                 .append(hoursAheadBehind);
 };
 
+const addCurrentTimeAtKennedySpaceCentre = () => {
+    const kennedyTime = (new Date()).toLocaleTimeString('en-US', {
+        timeZone: "America/New_York"
+    })
+    return currentKennedyTime = document.getElementById('kennedyTimeNow')
+    .append(kennedyTime)
+};
 
 addTodaysDate();
 addTimeZoneDifference();
+addCurrentTimeAtKennedySpaceCentre();
