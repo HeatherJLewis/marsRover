@@ -1,9 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const { privateKey } = require('./config/apiCredentials');
 
 const router = express.Router();
-
-const privateKey = 'WeLoveAstronomy!';
 
 router.use('/login', express.static('frontend/login.html'));
 
