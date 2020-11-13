@@ -20,7 +20,7 @@ const addTimeZoneDifference = () => {
 };
 
 const addCurrentTimeAtKennedySpaceCentre = () => {
-    const kennedyTime = (new Date()).toLocaleTimeString('en-US', {
+    const kennedyTime = (new Date()).toLocaleTimeString(undefined, {
         timeZone: "America/New_York"
     })
     return currentKennedyTime = document.getElementById('kennedyTimeNow')
