@@ -10,7 +10,7 @@ router.post('/authenticate', (request, response) => {
 	const { username , password } = request.body;
 	const token = jwt.sign({username, password}, privateKey );
 
-	response.header('Authorization', 'bearer ' +token);
+	response.cookie('access_token', token, { httpOnly: true });
 	response.send('We have made a JWT for you!');
 });
 
