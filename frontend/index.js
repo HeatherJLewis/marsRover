@@ -24,7 +24,7 @@ const addCurrentTimeAtKennedySpaceCentre = () => {
         timeZone: "America/New_York"
     })
     return currentKennedyTime = document.getElementById('kennedyTimeNow')
-    .append(kennedyTime)
+                                        .append(kennedyTime);
 };
 
 addTodaysDate();
