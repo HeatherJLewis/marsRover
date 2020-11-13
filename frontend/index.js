@@ -13,7 +13,7 @@ const addTimeZoneDifference = () => {
 	const hoursAheadBehind = document.createTextNode(`${usersHoursFromKennedy} hours ${aheadBehindText} the Kennedy Space Centre`);
 
 	document.getElementById('kennedyTime')
-            .append(hoursAheadBehind);
+		.append(hoursAheadBehind);
 };
 
 const addCurrentTimeAtKennedySpaceCentre = () => {
