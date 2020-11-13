@@ -1,5 +1,24 @@
-const dateHeader = document.getElementById('dateHeading');
+const addTodaysDate = () => {
+    const dateToday = document.createTextNode(String((new Date()).toLocaleString()));
+    dateHeader = document.getElementById('dateHeading')
+                         .append(dateToday);
+};
 
-const dateToday = document.createTextNode(String(new Date()));
+const addTimeZoneDifference = () => {
+    const usersHoursFromGMT = ((new Date()).getTimezoneOffset())/60;
+    const usersHoursFromKennedy = usersHoursFromGMT + 5;
 
-dateHeader.append(dateToday);
+    const kennedyTimeZoneOffset = document.createTextNode(usersHoursFromKennedy);
+    kennedyTime.append(kennedyTimeZoneOffset);
+
+    const aheadBehindText = usersHoursFromKennedy > 0 ? "ahead of" : "behind"
+
+    const hoursAheadBehind = document.createTextNode(` hours ${aheadBehindText} the Kennedy Space Centre`);
+
+    kennedyTimeHeader = document.getElementById('kennedyTime')
+                                .append(hoursAheadBehind);
+};
+
+
+addTodaysDate();
+addTimeZoneDifference();
