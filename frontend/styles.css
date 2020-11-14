@@ -1,13 +1,29 @@
+/* every page */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #031D40;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    color: #031D40;
+}
+
 h1 {
     text-align: center;
-    border: 2px solid grey;
+    border: none;
     padding: 20px;
-    color: blue;
+    color: #031D40;
     font-size: 500%;
+    background-color: #E0E8ED;
+    margin: 50px;
+    border-radius: 1em;
 }
 
 h4 {
     text-align: center;
+    color: white;
 }
 
 img {
@@ -17,23 +33,67 @@ img {
     margin-right: auto;
 }
 
+a {
+    color: white;
+}
+
 h3 {
     text-align: center;
+    color: white;
 }
 
-.form-input {
-    padding: 10px
-}
-
+/* login page */
 .login {
     width: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid grey;
-    background-color: lightgrey;
+    background-color: #E0E8ED;
+    border-radius: 1em;
+    padding: 30px;
+    margin-top: 100px;
 }
 
-button {
-    margin: 20px;
+.login h2 {
+    text-align: center;
+    font-size: 120%;
+    padding: 10px;
+}
+
+.form-input {
+    padding: 10px;
+    margin: 10px;
+}
+.form-input input[type="text"], [type="password"]{
+    border: none;
+    background: transparent;
+    border-bottom: solid 1px;
+}
+
+.form-input input[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    font-size: 150%;
+    border-radius: 0.5em;
+    background-color: #031D40;
+    color: #E0E8ED;
+    border: none;
+    box-shadow:  10px 10px 15px 0px #8B8E90;
+}
+
+.form-input input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #23551b;
+    border: solid 3px #031D40;
+    color: #E0E8ED;
+}
+
+.login p {
+    color: #031D40;
+    margin: 10px;
+    padding: 10px;
+}
+
+.login p a {
+    color: #031D40;
 }
