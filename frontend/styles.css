@@ -21,6 +21,11 @@ h1 {
     border-radius: 1em;
 }
 
+h3 {
+    text-align: center;
+    color: white;
+}
+
 h4 {
     text-align: center;
     color: white;
@@ -34,11 +39,6 @@ img {
 }
 
 a {
-    color: white;
-}
-
-h3 {
-    text-align: center;
     color: white;
 }
 
@@ -64,6 +64,7 @@ h3 {
     padding: 10px;
     margin: 10px;
 }
+
 .form-input input[type="text"], [type="password"]{
     border: none;
     background: transparent;
@@ -86,12 +87,6 @@ h3 {
     background-color: #23551b;
     border: solid 3px #031D40;
     color: #E0E8ED;
-}
-
-.login p {
-    color: #031D40;
-    margin: 10px;
-    padding: 10px;
 }
 
 .login p a {
