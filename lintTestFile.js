@@ -1,2 +1,2 @@
-var x = 1;
-if (!!x) console.log("hi");
+var y = 1;
+if (y) console.log('hi');
