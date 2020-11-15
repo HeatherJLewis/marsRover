@@ -1,12 +1,7 @@
 const checkForUser = (request, response, next) => {
 	const { username , password } = request.body;
 
-	const namedParameters = {
-		username,
-		password
-	};
-
-	if(namedParameters.username === 'Bob' && namedParameters.password === 'cat'){
+	if(username === 'Bob' && password === 'cat'){
 		next();
 	}
 
