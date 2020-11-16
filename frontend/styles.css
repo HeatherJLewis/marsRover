@@ -1,39 +1,98 @@
+/* every page */
+
+:root {
+  --main-color-one: #031d40;
+  --main-color-two: #e0e8ed;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-color-one);
+  background-size: cover;
+  background-position: center;
+  font-family: sans-serif;
+}
+
 h1 {
-    text-align: center;
-    border: 2px solid grey;
-    padding: 20px;
-    color: blue;
-    font-size: 500%;
-}
-
-h4 {
-    text-align: center;
-}
-
-img {
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  border: none;
+  padding: 20px;
+  color: var(--main-color-one);
+  font-size: 500%;
+  background-color: var(--main-color-two);
+  margin: 50px;
+  border-radius: 1em;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
+  color: white;
+}
+
+h4 {
+  text-align: center;
+  color: white;
+}
+
+img {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: white;
+}
+
+/* login page */
+.login {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--main-color-two);
+  border-radius: 1em;
+  padding: 30px;
+  margin-top: 100px;
+}
+
+.login h2 {
+  text-align: center;
+  font-size: 120%;
+  padding: 10px;
 }
 
 .form-input {
-    padding: 10px
+  padding: 10px;
+  margin: 10px;
 }
 
-.login {
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid grey;
-    background-color: lightgrey;
+.form-input input[type="text"],
+[type="password"] {
+  border: none;
+  background: transparent;
+  border-bottom: solid 1px;
 }
 
-button {
-    margin: 20px;
+.form-input input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 150%;
+  border-radius: 0.5em;
+  background-color: var(--main-color-one);
+  color: var(--main-color-two);
+  border: none;
+  box-shadow: 10px 10px 15px 0px #8b8e90;
+}
+
+.form-input input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #23551b;
+  border: solid 3px var(--main-color-one);
+  color: var(--main-color-two);
+}
+
+.login p a {
+  color: var(--main-color-one);
 }
