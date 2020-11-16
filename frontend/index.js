@@ -26,21 +26,22 @@ const addCurrentTimeAtKennedySpaceCentre = () => {
 	document.getElementById('kennedyTimeNow').append(kennedyTime);
 };
 
-const earthDayMilliseconds = 24 * 60 * 60 * 1000;
-const solDayMilliseconds =
-  earthDayMilliseconds + 39 * 60 * 1000 + 35.244 * 1000;
-const solConversionFactor = solDayMilliseconds / earthDayMilliseconds;
+const EARTH_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
+const SOL_DAY_MILLISECONDS =
+  EARTH_DAY_MILLISECONDS + 39 * 60 * 1000 + 35.244 * 1000;
+const solConversionFactor = SOL_DAY_MILLISECONDS / EARTH_DAY_MILLISECONDS;
 
 const calculateSols = () => {
+	const millisecondsSinceLanding =
+    Date.now() - new Date(2012, 7, 6, 5, 17, 57).getTime();
 	const earthDaysSinceLanding =
-    (Date.now() - new Date(2012, 7, 6, 5, 17, 57).getTime()) /
-    (1000 * 60 * 60 * 24);
+    millisecondsSinceLanding / EARTH_DAY_MILLISECONDS;
 	return Math.round(earthDaysSinceLanding / solConversionFactor);
 };
 
 const addNumberOfSols = () => {
 	const numberOfSols = calculateSols();
-	document.getElementById('sol-number').append(`${numberOfSols} Sols`);
+	document.getElementById('sol-number').append(`${numberOfSols} sols`);
 };
 
 addNumberOfSols();
