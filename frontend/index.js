@@ -27,24 +27,28 @@ const addCurrentTimeAtKennedySpaceCentre = () => {
 };
 
 const EARTH_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
-const SOL_DAY_MILLISECONDS =
-  EARTH_DAY_MILLISECONDS + 39 * 60 * 1000 + 35.244 * 1000;
-const solConversionFactor = SOL_DAY_MILLISECONDS / EARTH_DAY_MILLISECONDS;
-
-const calculateSols = () => {
-	const millisecondsSinceLanding =
-    Date.now() - new Date(2012, 7, 6, 5, 17, 57).getTime();
-	const earthDaysSinceLanding =
-    millisecondsSinceLanding / EARTH_DAY_MILLISECONDS;
-	return Math.round(earthDaysSinceLanding / solConversionFactor);
-};
+const millisecondsSinceLanding =
+  Date.now() - new Date(2012, 7, 6, 5, 17, 57).getTime();
+const earthDaysSinceLanding = millisecondsSinceLanding / EARTH_DAY_MILLISECONDS;
 
 const addNumberOfSols = () => {
-	const numberOfSols = calculateSols();
+	const solDayMilliseconds =
+    EARTH_DAY_MILLISECONDS + 39 * 60 * 1000 + 35.244 * 1000;
+	const solConversionFactor = solDayMilliseconds / EARTH_DAY_MILLISECONDS;
+
+	const numberOfSols = Math.round(earthDaysSinceLanding / solConversionFactor);
+
 	document.getElementById('sol-number').append(`${numberOfSols} sols`);
 };
 
+const addNumberOfEarthDays = () => {
+	document
+		.getElementById('earth-number')
+		.append(`${Math.round(earthDaysSinceLanding)} Earth days`);
+};
+
 addNumberOfSols();
+addNumberOfEarthDays();
 addTodaysDate();
 addTimeZoneDifference();
 addCurrentTimeAtKennedySpaceCentre();
