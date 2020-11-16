@@ -29,18 +29,21 @@ const addCurrentTimeAtKennedySpaceCentre = () => {
 const earthDayMilliseconds = 24 * 60 * 60 * 1000;
 const solDayMilliseconds =
   earthDayMilliseconds + 39 * 60 * 1000 + 35.244 * 1000;
-console.log(earthDayMilliseconds, solDayMilliseconds);
 const solConversionFactor = solDayMilliseconds / earthDayMilliseconds;
-console.log(solConversionFactor);
+
 const calculateSols = () => {
 	const earthDaysSinceLanding =
     (Date.now() - new Date(2012, 7, 6, 5, 17, 57).getTime()) /
     (1000 * 60 * 60 * 24);
-	const solsSinceLanding = earthDaysSinceLanding / solConversionFactor;
-	console.log(solsSinceLanding);
+	return Math.round(earthDaysSinceLanding / solConversionFactor);
 };
 
-calculateSols();
+const addNumberOfSols = () => {
+	const numberOfSols = calculateSols();
+	document.getElementById('sol-number').append(`${numberOfSols} Sols`);
+};
+
+addNumberOfSols();
 addTodaysDate();
 addTimeZoneDifference();
 addCurrentTimeAtKennedySpaceCentre();
