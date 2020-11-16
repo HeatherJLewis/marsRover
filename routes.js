@@ -8,8 +8,8 @@ const router = express.Router();
 router.use('/login', express.static('frontend/login.html'));
 
 router.post('/authenticate', checkForUser, (request, response) => {
-	const { username , password } = request.body;
-	const token = jwt.sign({username, password}, PRIVATE_KEY );
+	const { username, password } = request.body;
+	const token = jwt.sign({ username, password }, PRIVATE_KEY);
 
 	response.cookie('access_token', token, { httpOnly: true });
 	response.send('We have made a JWT for you!');
