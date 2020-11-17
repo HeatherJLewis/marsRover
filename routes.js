@@ -2,8 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const { PRIVATE_KEY } = require('./config/apiCredentials');
 const { checkForUser } = require('./checkForUser');
+const { getApodImageAndExplanation } = require('./apod');
 
-const { getApod } = require('./frontend/apod');
 const router = express.Router();
 
 router.use('/login', express.static('frontend/login.html'));
@@ -16,9 +16,6 @@ router.post('/authenticate', checkForUser, (request, response) => {
 	response.send('We have made a JWT for you!');
 });
 
-router.get('/apod', (request, response) => {
-	getApod().then(data =>
-		response.send(data));
-});
+router.get('/apod', getApodImageAndExplanation);
 
 module.exports = router;
