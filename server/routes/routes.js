@@ -8,4 +8,6 @@ router.use('/login', express.static('app/login'));
 
 router.post('/authenticate', checkForUser, setJwtOnAccessToken);
 
+router.use('/rover', express.static('app/marsRoverPath'));
+
 module.exports = router;
