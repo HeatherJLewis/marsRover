@@ -2,7 +2,7 @@
   "name": "marsRover",
   "version": "1.0.0",
   "description": "Mars Rover Project for Bootcamp 2",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
