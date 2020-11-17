@@ -5,7 +5,7 @@ const { checkForUser } = require('./checkForUser');
 
 const router = express.Router();
 
-router.use('/login', express.static('frontend/login.html'));
+router.use('/login', express.static('app/login'));
 
 router.post('/authenticate', checkForUser, (request, response) => {
 	const { username, password } = request.body;

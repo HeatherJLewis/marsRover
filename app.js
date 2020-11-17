@@ -5,11 +5,13 @@ const router = require('./routes');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-app.use(express.urlencoded({
-	extended: true
-}));
+app.use(
+	express.urlencoded({
+		extended: true,
+	})
+);
 
-app.use(express.static('frontend'));
+app.use(express.static('./app/homepage/'));
 app.use(router);
 
 app.listen(port, () => {
