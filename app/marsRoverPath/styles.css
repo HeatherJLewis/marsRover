@@ -7,18 +7,20 @@ body {
 div {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
-.roverSprite {
-  width: 50px;
+#rover-sprite {
+  width: 6%;
   height: auto;
   position: absolute;
-  top: 50px;
-  left: 1150px;
+  top: calc((10 / 946) * 100%);
+  left: calc((1150 / 1920) * 100%);
 }
