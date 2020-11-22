@@ -15,7 +15,7 @@ const getApod = async () => {
 		);
 		return apodData;
 	} catch (error) {
-		console.error('Error', error);
+		return Promise.reject(new Error(`${error.name}: ${error.message}`));
 	}
 };
 
@@ -25,7 +25,11 @@ const getApodImageAndExplanation = async (request, response) => {
 		const { url, explanation } = body.data;
 		response.send({ url, explanation });
 	} catch (error) {
-		console.error('Error', error);
+		response
+			.status(500)
+			.send(
+				'We have problems retrieving today\'s photo. Please try again later'
+			);
 	}
 };
 
