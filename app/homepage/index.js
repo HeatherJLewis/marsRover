@@ -47,6 +47,20 @@ const addNumberOfEarthDays = () => {
 		.append(`${Math.round(earthDaysSinceLanding)} Earth days`);
 };
 
+const getPhotoOfTheDay = () => {
+	fetch('http://localhost:3000/apod')
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			document.getElementById('apod').setAttribute('src', `${data.url}`);
+			document.getElementById(
+				'apod-explanation'
+			).innerText = `${data.explanation}`;
+		});
+};
+
+getPhotoOfTheDay();
 addNumberOfSols();
 addNumberOfEarthDays();
 addTodaysDate();
