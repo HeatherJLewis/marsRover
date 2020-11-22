@@ -41,10 +41,10 @@ dragItem.addEventListener('mousedown', dragStart, false);
 dragItem.addEventListener('mouseup', dragEnd, false);
 dragItem.addEventListener('mousemove', drag, false);
 
-function dragStart(e) {
-	initialX = e.clientX - xOffset;
-	initialY = e.clientY - yOffset;
-	if (e.target === dragItem) {
+function dragStart(event) {
+	initialX = event.clientX - xOffset;
+	initialY = event.clientY - yOffset;
+	if (event.target === dragItem) {
 		active = true;
 	}
 }
@@ -56,11 +56,11 @@ function dragEnd() {
 	active = false;
 }
 
-function drag(e) {
+function drag(event) {
 	if (active) {
-		e.preventDefault();
-		currentX = e.clientX - initialX;
-		currentY = e.clientY - initialY;
+		event.preventDefault();
+		currentX = event.clientX - initialX;
+		currentY = event.clientY - initialY;
 
 		xOffset = currentX;
 		yOffset = currentY;
@@ -69,6 +69,6 @@ function drag(e) {
 	}
 }
 
-function setTranslate(xPos, yPos, el) {
-	el.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
+function setTranslate(xPos, yPos, element) {
+	element.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
 }
