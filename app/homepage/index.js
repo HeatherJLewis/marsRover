@@ -57,6 +57,8 @@ const getPhotoOfTheDay = () => {
 			document.getElementById(
 				'apod-explanation'
 			).innerText = `${data.explanation}`;
+			document.getElementById('image-caption').innerText =
+        'The Astronomy Photo Of The Day';
 		});
 };
 
