@@ -1,7 +1,9 @@
 const express = require('express');
 const { checkForUser } = require('../middleware/checkForUser');
 const { setJwtOnAccessToken } = require('../middleware/setJwt');
-const { getImageAndExplanationForHomepage } = require('../middleware/getApod');
+const {
+	getImageAndExplanationForHomepage,
+} = require('../middleware/getPhotoAndTextForHomepage.js');
 
 const router = express.Router();
 
