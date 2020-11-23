@@ -7,7 +7,7 @@ const queryParameters = {
 	},
 };
 
-const getPhotoOfTheDay = async () => {
+const getApodImageAndExplanation = async () => {
 	try {
 		const apodData = await axios.get(
 			'https://api.nasa.gov/planetary/apod',
@@ -20,5 +20,5 @@ const getPhotoOfTheDay = async () => {
 };
 
 module.exports = {
-	getPhotoOfTheDay,
+	getApodImageAndExplanation,
 };

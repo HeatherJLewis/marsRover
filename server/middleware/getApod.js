@@ -1,8 +1,10 @@
-const { getPhotoOfTheDay } = require('../services/getPhotoOfTheDay');
+const {
+	getApodImageAndExplanation,
+} = require('../services/getApodPhotoOfTheDay');
 
-const getApodImageAndExplanation = async (request, response) => {
+const getImageAndExplanationForHomepage = async (request, response) => {
 	try {
-		const body = await getPhotoOfTheDay();
+		const body = await getApodImageAndExplanation();
 		const { url, explanation } = body.data;
 		response.send({ url, explanation });
 	} catch (error) {
@@ -15,5 +17,5 @@ const getApodImageAndExplanation = async (request, response) => {
 };
 
 module.exports = {
-	getApodImageAndExplanation,
+	getImageAndExplanationForHomepage,
 };
