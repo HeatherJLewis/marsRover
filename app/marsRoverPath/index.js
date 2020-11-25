@@ -27,8 +27,6 @@ const positionRoverAtStartOfPath = () => {
 };
 
 const dragAndDropRover = () => {
-	const roverSprite = document.querySelector('#rover-sprite');
-
 	const currentMousePosition = {
 		x: 0,
 		y: 0,
@@ -45,6 +43,8 @@ const dragAndDropRover = () => {
 	};
 
 	let active = false;
+
+	const roverSprite = document.getElementById('#rover-sprite');
 
 	const dragStart = (event) => {
 		initialMousePosition.x = event.clientX - offset.x;
