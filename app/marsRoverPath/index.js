@@ -26,49 +26,62 @@ const positionRoverAtStartOfPath = () => {
 	});
 };
 
+const dragAndDropRover = () => {
+	const roverSprite = document.querySelector('#rover-sprite');
+
+	const currentMousePosition = {
+		x: 0,
+		y: 0,
+	};
+
+	const initialMousePosition = {
+		x: 0,
+		y: 0,
+	};
+
+	const offset = {
+		x: 0,
+		y: 0,
+	};
+
+	let active = false;
+
+	const dragStart = (event) => {
+		initialMousePosition.x = event.clientX - offset.x;
+		initialMousePosition.y = event.clientY - offset.y;
+		if (event.target === roverSprite) {
+			active = true;
+		}
+	};
+
+	const dragEnd = () => {
+		initialMousePosition.x = currentMousePosition.x;
+		initialMousePosition.y = currentMousePosition.y;
+
+		active = false;
+	};
+
+	const setTranslate = (xPos, yPos, element) => {
+		element.style.transform = 'translate(' + xPos + 'px, ' + yPos + 'px)';
+	};
+
+	const drag = (event) => {
+		if (active) {
+			event.preventDefault();
+			currentMousePosition.x = event.clientX - initialMousePosition.x;
+			currentMousePosition.y = event.clientY - initialMousePosition.y;
+
+			offset.x = currentMousePosition.x;
+			offset.y = currentMousePosition.y;
+
+			setTranslate(currentMousePosition.x, currentMousePosition.y, roverSprite);
+		}
+	};
+
+	roverSprite.addEventListener('mousedown', dragStart, false);
+	roverSprite.addEventListener('mouseup', dragEnd, false);
+	roverSprite.addEventListener('mousemove', drag, false);
+};
+
 positionRoverAtStartOfPath();
-var dragItem = document.querySelector('#rover-sprite');
-
-var active = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
-
-dragItem.addEventListener('mousedown', dragStart, false);
-dragItem.addEventListener('mouseup', dragEnd, false);
-dragItem.addEventListener('mousemove', drag, false);
-
-function dragStart(event) {
-	initialX = event.clientX - xOffset;
-	initialY = event.clientY - yOffset;
-	if (event.target === dragItem) {
-		active = true;
-	}
-}
-
-function dragEnd() {
-	initialX = currentX;
-	initialY = currentY;
-
-	active = false;
-}
-
-function drag(event) {
-	if (active) {
-		event.preventDefault();
-		currentX = event.clientX - initialX;
-		currentY = event.clientY - initialY;
-
-		xOffset = currentX;
-		yOffset = currentY;
-
-		setTranslate(currentX, currentY, dragItem);
-	}
-}
-
-function setTranslate(xPos, yPos, element) {
-	element.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
-}
+dragAndDropRover();
