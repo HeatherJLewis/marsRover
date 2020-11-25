@@ -6,6 +6,7 @@ const { setJwtOnAccessToken } = require('../middleware/setJwt');
 const {
 	getImageAndExplanationForHomepage,
 } = require('../middleware/getPhotoAndTextForHomepage.js');
+const { response } = require('express');
 
 const router = express.Router();
 
@@ -13,8 +14,14 @@ router.use('/login', express.static('app/login'));
 router.use('/rover', express.static('app/marsRoverPath'));
 router.use(
 	'/userAccountPage',
+	((request, response, done) => {
+		// console.log(request.cookies)
+		done();
+	}),
 	passport.authenticate('jwt', { session: false }),
-	express.static('app/userAccountPage')
+	(request, response) => {
+		response.send("Hello User!")
+	}
 );
 
 router.get('/apod', getImageAndExplanationForHomepage);
