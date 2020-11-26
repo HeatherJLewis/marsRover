@@ -47,6 +47,25 @@ const addNumberOfEarthDays = () => {
 		.append(`${Math.round(earthDaysSinceLanding)} Earth days`);
 };
 
+const getPhotoOfTheDay = () => {
+	fetch('/apod')
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			document.getElementById('apod').setAttribute('src', `${data.url}`);
+			document.getElementById(
+				'apod-explanation'
+			).innerText = `${data.explanation}`;
+			document.getElementById('image-caption').innerText =
+        'The Astronomy Photo Of The Day';
+		})
+		.catch((error) => {
+			console.log(`Unable to retieve photo: ${error.message}`);
+		});
+};
+
+getPhotoOfTheDay();
 addNumberOfSols();
 addNumberOfEarthDays();
 addTodaysDate();
