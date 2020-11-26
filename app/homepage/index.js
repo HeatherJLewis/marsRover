@@ -48,7 +48,7 @@ const addNumberOfEarthDays = () => {
 };
 
 const getPhotoOfTheDay = () => {
-	fetch('http://localhost:3000/apod')
+	fetch('/apod')
 		.then((response) => {
 			return response.json();
 		})
@@ -59,6 +59,9 @@ const getPhotoOfTheDay = () => {
 			).innerText = `${data.explanation}`;
 			document.getElementById('image-caption').innerText =
         'The Astronomy Photo Of The Day';
+		})
+		.catch((error) => {
+			console.log(`Unable to retieve photo: ${error.message}`);
 		});
 };
 

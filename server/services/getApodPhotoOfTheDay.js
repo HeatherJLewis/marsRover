@@ -10,7 +10,7 @@ const queryParameters = {
 const getApodImageAndExplanation = async () => {
 	try {
 		const apodData = await axios.get(
-			'https://api.nasa.gov/planetary/apod',
+			'https://api.nasa.gov/planetary/apo',
 			queryParameters
 		);
 		return apodData;
