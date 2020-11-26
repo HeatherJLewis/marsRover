@@ -2,17 +2,9 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { PRIVATE_KEY } = require('../config/apiCredentials');
 
-<<<<<<< HEAD
 const extractJwt = (request) => {
 	if (request && request) {
 		return request.cookies.access_token;
-=======
-const cookieExtractor = (request) => {
-	let token = null;
-
-	if (request && request.headers.cookie) {
-		token = request.headers.cookie.split('=')[1];
->>>>>>> marsRover15: Retrieves the username and serves as JSON on the /getUsername endpoint
 	}
 
 	return null;
