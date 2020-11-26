@@ -13,10 +13,13 @@ router.use('/login', express.static('app/login'));
 router.use('/rover', express.static('app/marsRoverPath'));
 router.use(
 	'/userAccountPage',
-	passport.authenticate('jwt', { session: false }),
-	(request, response) => {
-		response.send('Hello User!');
-	}
+	[
+		passport.authenticate('jwt', { session: false }),
+		express.static('app/userAccountPage'),
+	]
+	// (request, response) => {
+	// 	response.send('Hello Bob!');
+	// }
 );
 
 router.get('/apod', getImageAndExplanationForHomepage);
