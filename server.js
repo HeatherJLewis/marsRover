@@ -1,10 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const router = require('./server/routes/routes');
+const { configurePassport } = require('./config/passport');
+const cookieParser = require('cookie-parser');
+
+configurePassport();
+
 const app = express();
 const port = 3000;
-const router = require('./server/routes/routes');
-const bodyParser = require('body-parser');
 
+app.use(passport.initialize());
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(
 	express.urlencoded({
 		extended: true,
