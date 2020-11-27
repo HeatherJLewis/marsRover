@@ -9,15 +9,12 @@ const {
 
 const router = express.Router();
 
-router.use('/login', express.static('app/login'));
+router.get('/login', express.static('app/login'));
 router.use('/rover', express.static('app/marsRoverPath'));
-router.use(
-	'/userAccountPage',
+router.use('/userAccountPage', [
 	passport.authenticate('jwt', { session: false }),
-	(request, response) => {
-		response.send('Hello User!');
-	}
-);
+	express.static('app/userAccountPage'),
+]);
 
 router.get('/apod', getImageAndExplanationForHomepage);
 
