@@ -19,7 +19,6 @@ app.use(
 	})
 );
 
-app.use(express.static('./app/homepage/'));
 app.use(router);
 
 app.listen(port, () => {
