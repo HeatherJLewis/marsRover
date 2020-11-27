@@ -2,18 +2,16 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { PRIVATE_KEY } = require('../config/apiCredentials');
 
-const cookieExtractor = (request) => {
-	var token = null;
-
+const extractJwt = (request) => {
 	if (request && request) {
-		token = request.cookies.access_token;
+		return request.cookies.access_token;
 	}
 
-	return token;
+	return null;
 };
 
 let options = {
-	jwtFromRequest: cookieExtractor,
+	jwtFromRequest: extractJwt,
 	secretOrKey: PRIVATE_KEY,
 };
 

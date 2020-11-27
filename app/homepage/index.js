@@ -65,7 +65,23 @@ const getPhotoOfTheDay = () => {
 		});
 };
 
+const getUsername = () => {
+	fetch('/getUsername')
+		.then((response) => {
+			return response.json();
+		})
+		.then(({ username }) => {
+			document.getElementById(
+				'logged-in'
+			).textContent = `${username}, welcome to NASA`;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+};
+
 getPhotoOfTheDay();
+getUsername();
 addNumberOfSols();
 addNumberOfEarthDays();
 addTodaysDate();
