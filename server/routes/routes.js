@@ -9,15 +9,15 @@ const {
 } = require('../middleware/getPhotoAndTextForHomepage.js');
 
 const router = express.Router();
-// PUBLIC
+
 router.use(express.static('./app/homepage/'));
 router.use('/login', express.static('app/login'));
 router.get('/apod', getImageAndExplanationForHomepage);
 router.post('/authenticate', checkForUser, setJwtOnAccessToken);
 
-// PRIVATE
-
-router.use('/user', [passport.authenticate('jwt', { session: false }), user]);
-// router.use('/rover', express.static('app/marsRoverPath'));
+router.use('/user', [
+	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
+	user,
+]);
 
 module.exports = router;
