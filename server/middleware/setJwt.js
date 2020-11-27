@@ -6,7 +6,7 @@ const setJwtOnAccessToken = (request, response) => {
 	const token = jwt.sign({ username, password }, PRIVATE_KEY);
 
 	response.cookie('access_token', token, { httpOnly: true });
-	response.redirect('/userAccountPage');
+	response.redirect('/');
 };
 
 module.exports = {
