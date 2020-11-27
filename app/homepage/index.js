@@ -66,7 +66,7 @@ const getPhotoOfTheDay = () => {
 };
 
 const getUsername = () => {
-	fetch('/getUsername')
+	fetch('/user/getUsername')
 		.then((response) => {
 			return response.json();
 		})
