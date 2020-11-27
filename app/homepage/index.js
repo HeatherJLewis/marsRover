@@ -47,7 +47,6 @@ const addNumberOfEarthDays = () => {
 		.append(`${Math.round(earthDaysSinceLanding)} Earth days`);
 };
 
-<<<<<<< HEAD
 const getPhotoOfTheDay = () => {
 	fetch('/apod')
 		.then((response) => {
@@ -66,8 +65,6 @@ const getPhotoOfTheDay = () => {
 		});
 };
 
-getPhotoOfTheDay();
-=======
 const getUsername = () => {
 	fetch('/getUsername')
 		.then((response) => {
@@ -83,8 +80,8 @@ const getUsername = () => {
 		});
 };
 
+getPhotoOfTheDay();
 getUsername();
->>>>>>> marsRover15: Renders username on the homepage
 addNumberOfSols();
 addNumberOfEarthDays();
 addTodaysDate();
