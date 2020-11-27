@@ -5,16 +5,17 @@ const { PRIVATE_KEY } = require('../config/apiCredentials');
 const cookieExtractor = (request) => {
 	var token = null;
 
-	if (request && request.headers.cookie) {
-		token = request.headers.cookie.split('=')[1];
+	if (request && request) {
+		token = request.cookies.access_token;
 	}
 
 	return token;
 };
 
-let options = {};
-options.jwtFromRequest = cookieExtractor;
-options.secretOrKey = PRIVATE_KEY;
+let options = {
+	jwtFromRequest: cookieExtractor,
+	secretOrKey: PRIVATE_KEY,
+};
 
 const configurePassport = () => {
 	passport.use(
