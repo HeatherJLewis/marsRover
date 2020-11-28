@@ -54,17 +54,96 @@ const dragAndDropRover = () => {
 		}
 	};
 
+	const DATA_POINTS = {
+		10: {
+			x: 1100,
+		},
+		40: {
+			x: 1100,
+		},
+		70: {
+			x: 1051,
+		},
+		100: {
+			x: 1014,
+		},
+		130: {
+			x: 987,
+		},
+		160: {
+			x: 970,
+		},
+		190: {
+			x: 933,
+		},
+		220: {
+			x: 870,
+		},
+		250: {
+			x: 870,
+		},
+		280: {
+			x: 870,
+		},
+		310: {
+			x: 790,
+		},
+		340: {
+			x: 780,
+		},
+		370: {
+			x: 775,
+		},
+		400: {
+			x: 743,
+		},
+		430: {
+			x: 700,
+		},
+		460: {
+			x: 690,
+		},
+		490: {
+			x: 638,
+		},
+		520: {
+			x: 630,
+		},
+		550: {
+			x: 611,
+		},
+		580: {
+			x: 618,
+		},
+		610: {
+			x: 626,
+		},
+		640: {
+			x: 639,
+		},
+		670: {
+			x: 646,
+		},
+		700: {
+			x: 660,
+		},
+		730: {
+			x: 718,
+		},
+		760: {
+			x: 738,
+		},
+		790: {
+			x: 763,
+		},
+	};
+	const roundToNearest30 = (number) => {
+		return Math.round(number / 30) * 30;
+	};
+
 	const dragEnd = () => {
 		initialMousePosition.x = currentMousePosition.x;
 		initialMousePosition.y = currentMousePosition.y;
-
-		console.log(
-			'DRAG END',
-			'x',
-			initialMousePosition.x,
-			'y',
-			initialMousePosition.y
-		);
 		active = false;
 	};
 
@@ -72,39 +151,13 @@ const dragAndDropRover = () => {
 		element.style.transform = 'translate(' + xPos + 'px, ' + yPos + 'px)';
 	};
 
-	const calculateXcoordinateUpper = (yCoordinate) => {
-		const gradient = -545 / 500;
-		const constant = 700 - 600 * gradient;
-		return (yCoordinate - constant) / gradient;
-	};
-
-	const calculateXcoordinateMiddle = (yCoordinate) => {
-		const gradient = 155 / 80;
-		const constant = 480 - 600 * gradient;
-		return (yCoordinate - constant) / gradient;
-	};
-
-	const calculateXcoordinateLower = (yCoordinate) => {
-		const gradient = 100 / 120;
-		const constant = 705 - 680 * gradient;
-		return (yCoordinate - constant) / gradient;
-	};
-
 	const drag = (event) => {
 		if (active) {
 			event.preventDefault();
-			if (event.clientY - initialMousePosition.y < 545) {
-				currentMousePosition.x =
-          calculateXcoordinateUpper(event.clientY) - initialMousePosition.x;
-			} else if (event.clientY - initialMousePosition.y < 700) {
-				currentMousePosition.x =
-          calculateXcoordinateMiddle(event.clientY) - initialMousePosition.x;
-			} else {
-				currentMousePosition.x =
-          calculateXcoordinateLower(event.clientY) - initialMousePosition.x;
-			}
-			currentMousePosition.y = event.clientY - initialMousePosition.y;
-			// currentMousePosition.x = event.clientX - initialMousePosition.x;
+
+			currentMousePosition.y = roundToNearest30(event.clientY) + 10;
+			currentMousePosition.x =
+        DATA_POINTS['' + (roundToNearest30(event.clientY) + 10)].x - 1100;
 
 			offset.x = currentMousePosition.x;
 			offset.y = currentMousePosition.y;
