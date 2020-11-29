@@ -14,27 +14,23 @@ body {
   color: white;
 }
 
-ul {
+#navbar {
+  background-color: var(--main-color-one);
   padding: 20px;
   margin: 0;
-}
-li {
-  display: inline;
+  display: flex;
 }
 
-li a {
+#navbar a {
+  display: inline;
   padding: 10px;
   text-decoration: none;
   color: var(--main-color-two);
 }
 
-li a:hover {
+#navbar a:hover {
   padding: 10px;
   text-decoration: underline;
-}
-
-#navbar {
-  background-color: var(--main-color-one);
 }
 
 .sticky {
@@ -43,7 +39,7 @@ li a:hover {
   width: 100%;
 }
 
-.active {
+#navbar .active {
   color: var(--main-color-one);
   background-color: var(--main-color-two);
 }

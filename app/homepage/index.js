@@ -79,34 +79,25 @@ const getUsername = () => {
 
 			const roverMapList = document.getElementById('navbar');
 
-			const roverMapListItem = document.createElement('li');
 			const roverMapLink = document.createElement('a');
 			roverMapLink.href = '/user/rover';
 			roverMapLink.textContent = 'Rover';
-			roverMapListItem.appendChild(roverMapLink);
+			roverMapList.appendChild(roverMapLink);
 
-			const calculatorListItem = document.createElement('li');
 			const calculatorLink = document.createElement('a');
 			calculatorLink.href = '/user/calculator';
 			calculatorLink.textContent = 'Calculator';
-			calculatorListItem.appendChild(calculatorLink);
+			roverMapList.appendChild(calculatorLink);
 
-			const userAccountListItem = document.createElement('li');
 			const userAccountLink = document.createElement('a');
 			userAccountLink.href = '/user/account';
 			userAccountLink.textContent = 'Account';
-			userAccountListItem.appendChild(userAccountLink);
+			roverMapList.appendChild(userAccountLink);
 
-			const logoutListItem = document.createElement('li');
 			const logoutLink = document.createElement('a');
 			logoutLink.href = '/user/logout';
 			logoutLink.textContent = 'Logout';
-			logoutListItem.appendChild(logoutLink);
-
-			roverMapList.appendChild(userAccountListItem);
-			roverMapList.appendChild(roverMapListItem);
-			roverMapList.appendChild(calculatorListItem);
-			roverMapList.appendChild(logoutListItem);
+			roverMapList.appendChild(logoutLink);
 		})
 		.catch((error) => {
 			console.log(error);

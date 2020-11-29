@@ -15,26 +15,24 @@ body {
   color: white;
 }
 
-ul {
+#navbar {
+  background-color: var(--main-color-one);
   padding: 20px;
   margin: 0;
-}
-li {
-  display: inline;
+  display: flex;
 }
 
-li a {
+#navbar a {
+  display: inline;
   padding: 10px;
   text-decoration: none;
 }
 
-li a:hover {
+#navbar a:hover {
   padding: 10px;
   text-decoration: underline;
-}
-
-#navbar {
-  background-color: var(--main-color-one);
+  background-color: var(--main-color-two);
+  color: var(--main-color-one);
 }
 
 .sticky {
