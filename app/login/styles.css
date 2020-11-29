@@ -33,6 +33,16 @@ li a:hover {
   text-decoration: underline;
 }
 
+#navbar {
+  background-color: var(--main-color-one);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .active {
   color: var(--main-color-one);
   background-color: var(--main-color-two);
