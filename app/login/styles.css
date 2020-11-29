@@ -14,6 +14,30 @@ body {
   color: white;
 }
 
+ul {
+  padding: 20px;
+  margin: 0;
+}
+li {
+  display: inline;
+}
+
+li a {
+  padding: 10px;
+  text-decoration: none;
+  color: var(--main-color-two);
+}
+
+li a:hover {
+  padding: 10px;
+  text-decoration: underline;
+}
+
+.active {
+  color: var(--main-color-one);
+  background-color: var(--main-color-two);
+}
+
 h1 {
   text-align: center;
   border: none;
@@ -21,8 +45,6 @@ h1 {
   color: var(--main-color-one);
   font-size: 500%;
   background-color: var(--main-color-two);
-  margin: 50px;
-  border-radius: 1em;
 }
 
 /* login page */
