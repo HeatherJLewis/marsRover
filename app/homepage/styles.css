@@ -20,6 +20,9 @@ body {
   padding: 20px;
   margin: 0;
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #navbar a {
@@ -33,12 +36,6 @@ body {
   text-decoration: underline;
   background-color: var(--main-color-two);
   color: var(--main-color-one);
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 .active {

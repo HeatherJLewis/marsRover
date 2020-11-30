@@ -19,6 +19,9 @@ body {
   padding: 20px;
   margin: 0;
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #navbar a {
@@ -31,12 +34,6 @@ body {
 #navbar a:hover {
   padding: 10px;
   text-decoration: underline;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 #navbar .active {
