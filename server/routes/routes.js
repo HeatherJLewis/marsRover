@@ -14,6 +14,7 @@ const router = express.Router();
 router.use(express.static('./app/homepage'));
 router.use(express.static('./app/services'));
 router.use('/login', express.static('app/login'));
+router.use('/register', express.static('app/register'));
 
 router.get('/apod', getImageAndExplanationForHomepage);
 router.post('/authenticate', checkForUser, setJwtOnAccessToken);
