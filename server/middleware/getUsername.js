@@ -7,7 +7,7 @@ const getUsername = (request, response) => {
 		response.json({ username });
 	} catch (error) {
 		console.log(error);
-		response.json({ username: 'not-signed-in' });
+		response.json({});
 	}
 };
 
