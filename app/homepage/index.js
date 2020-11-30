@@ -65,63 +65,7 @@ const getPhotoOfTheDay = () => {
 		});
 };
 
-const getUsername = () => {
-	fetch('/user/getUsername')
-		.then((response) => {
-			return response.json();
-		})
-		.then(({ username }) => {
-			document.getElementById(
-				'logged-in'
-			).textContent = `Welcome to your favourite astronomy page, ${username}!`;
-			document.getElementById('login-link').remove();
-			document.getElementById('register-link').remove();
-
-			const roverMapList = document.getElementById('navbar');
-
-			const roverMapLink = document.createElement('a');
-			roverMapLink.href = '/user/rover';
-			roverMapLink.textContent = 'Rover';
-			roverMapList.appendChild(roverMapLink);
-
-			const calculatorLink = document.createElement('a');
-			calculatorLink.href = '/user/calculator';
-			calculatorLink.textContent = 'Calculator';
-			roverMapList.appendChild(calculatorLink);
-
-			const userAccountLink = document.createElement('a');
-			userAccountLink.href = '/user/account';
-			userAccountLink.textContent = 'Account';
-			roverMapList.appendChild(userAccountLink);
-
-			const logoutLink = document.createElement('a');
-			logoutLink.href = '/user/logout';
-			logoutLink.textContent = 'Logout';
-			roverMapList.appendChild(logoutLink);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-};
-
-const stickyNavBar = () => {
-	const navbar = document.getElementById('navbar');
-	const offsetPositionOfNavBar = navbar.offsetTop;
-
-	const toggleStickyClass = () => {
-		if (window.pageYOffset >= offsetPositionOfNavBar) {
-			navbar.classList.add('sticky');
-		} else {
-			navbar.classList.remove('sticky');
-		}
-	};
-
-	window.onscroll = () => toggleStickyClass();
-};
-
-stickyNavBar();
 getPhotoOfTheDay();
-getUsername();
 addNumberOfSols();
 addNumberOfEarthDays();
 addTodaysDate();

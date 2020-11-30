@@ -7,11 +7,15 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <div id="navbar">
+        <nav id="navbar" class="sticky">
             <a class="active" href="/">Home</a>
             <a id="login-link" href="/login">Login</a>
             <a id="register-link" href="/register">Register</a>
-        </div>
+            <a id="rover-map-link" href="/user/rover">Rover</a>
+            <a id="calculator-link" href="/user/calculator">Calculator</a>
+            <a id="account-link" href="/user/account">Account</a>
+            <a id="logout-link" href="/logout">Logout</a>
+        </nav>
         <h1>Mars Rover Project</h1>
         <h2 id="logged-in"></h2>
         <div>
@@ -25,5 +29,6 @@
         <h2 id="sol-number">The Curiosity Rover has been on Mars for: </h2>
         <h2 id="earth-number">The Curiosity Rover has been on Mars for: </h2>
         <script src="index.js" async defer></script>
+        <script src="navBar.js" ></script>
     </body>
 </html>
