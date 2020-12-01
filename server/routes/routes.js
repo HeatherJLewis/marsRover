@@ -2,7 +2,6 @@ const express = require('express');
 const passport = require('passport');
 const user = require('./routers/user');
 const { getUsername } = require('../middleware/getUsername');
-
 const { checkForUser } = require('../middleware/checkForUser');
 const { setJwtOnAccessToken } = require('../middleware/setJwt');
 const {

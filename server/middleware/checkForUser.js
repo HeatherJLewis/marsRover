@@ -1,11 +1,21 @@
+const { Users } = require('../../database/models');
+
 const checkForUser = (request, response, next) => {
 	const { username, password } = request.body;
 
-	if (username === 'Bob' && password === 'cat') {
-		next();
-	} else {
-		response.send('No access for you!');
-	}
+	Users.findAll({
+		where: {
+			username: username,
+			password: password,
+		},
+	}).then((data) => {
+		console.log(data);
+		if (data[0]) {
+			next();
+		} else {
+			response.redirect('/login');
+		}
+	});
 };
 
 module.exports = {

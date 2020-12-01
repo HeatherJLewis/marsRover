@@ -11,7 +11,7 @@ const sequelizeDatabaseConnection = new Sequelize(
 	}
 );
 
-// Test Connection:
+// Test Connection: node config/sequelizeDbConnection.js
 sequelizeDatabaseConnection
 	.authenticate()
 	.then(() => {
