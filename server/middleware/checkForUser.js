@@ -8,14 +8,18 @@ const checkForUser = (request, response, next) => {
 			username: username,
 			password: password,
 		},
-	}).then((data) => {
-		console.log(data);
-		if (data[0]) {
-			next();
-		} else {
-			response.redirect('/login');
-		}
-	});
+	})
+		.then((data) => {
+			console.log(data);
+			if (data[0]) {
+				next();
+			} else {
+				response.redirect('/login');
+			}
+		})
+		.catch((error) => {
+			console.log(`${error.title}: ${error.message}`);
+		});
 };
 
 module.exports = {
