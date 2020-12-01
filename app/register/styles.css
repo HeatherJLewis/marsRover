@@ -6,39 +6,12 @@
 }
 body {
   margin: 0;
-  padding-top: 50px;
+  padding: 0;
   background-color: var(--main-color-one);
   background-size: cover;
   background-position: center;
   font-family: sans-serif;
   color: white;
-}
-
-#navbar {
-  background-color: var(--main-color-one);
-  padding: 20px;
-  margin: 0;
-  display: flex;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-#navbar a {
-  display: inline;
-  padding: 10px;
-  text-decoration: none;
-  color: var(--main-color-two);
-}
-
-#navbar a:hover {
-  padding: 10px;
-  text-decoration: underline;
-}
-
-#navbar .active {
-  color: var(--main-color-one);
-  background-color: var(--main-color-two);
 }
 
 h1 {
@@ -48,6 +21,8 @@ h1 {
   color: var(--main-color-one);
   font-size: 500%;
   background-color: var(--main-color-two);
+  margin: 50px;
+  border-radius: 1em;
 }
 
 /* login page */
@@ -75,7 +50,8 @@ h1 {
 }
 
 .form-input input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
   border: none;
   background: transparent;
   border-bottom: solid 1px;
