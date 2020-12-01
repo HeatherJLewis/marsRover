@@ -1,4 +1,5 @@
 const axios = require('axios');
+const logger = require('../../config/logger');
 const { NASA_API_KEY } = require('../../config/apiCredentials');
 
 const queryParameters = {
@@ -15,6 +16,7 @@ const getApodImageAndExplanation = async () => {
 		);
 		return apodData;
 	} catch (error) {
+		logger.warn(`${error.name}: ${error.message}`);
 		return Promise.reject(new Error(`${error.name}: ${error.message}`));
 	}
 };
