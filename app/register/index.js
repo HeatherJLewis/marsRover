@@ -48,7 +48,6 @@ const validatePassword = () => {
 	};
 
 	passwordElement.addEventListener('change', checkPassword);
-
 	passwordElement.addEventListener('focus', clearInput);
 	passwordElement.addEventListener('focus', enableSubmitButton);
 	passwordElement.addEventListener('focus', removeWarningMessages);
