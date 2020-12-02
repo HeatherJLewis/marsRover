@@ -25,31 +25,31 @@ const disableSubmitButton = () => {
 };
 
 const validatePassword = () => {
-	const hideWarningMessage = (warningMessageElement) => {
+	const showWarningMessage = (warningMessageElement) => {
 		document.getElementById(warningMessageElement).classList.toggle('hidden');
 	};
 
 	const checkPassword = (event) => {
 		if (event.target.value.length < 8) {
-			hideWarningMessage('length');
+			showWarningMessage('length');
 			disableSubmitButton();
 		}
 
 		const regExCheckNumber = /([0-9])/;
 		if (!regExCheckNumber.test(event.target.value)) {
-			hideWarningMessage('number');
+			showWarningMessage('number');
 			disableSubmitButton();
 		}
 
 		const regExCheckLowercase = /([a-z])/;
 		if (!regExCheckLowercase.test(event.target.value)) {
-			hideWarningMessage('lowercase');
+			showWarningMessage('lowercase');
 			disableSubmitButton();
 		}
 
 		const regExCheckUppercase = /([A-Z])/;
 		if (!regExCheckUppercase.test(event.target.value)) {
-			hideWarningMessage('uppercase');
+			showWarningMessage('uppercase');
 			disableSubmitButton();
 		}
 	};
