@@ -1,56 +1,67 @@
-const validatePassword = () => {
-	const passwordElement = document.getElementById('password');
-	const submitButton = document.getElementById('submit-button');
+const submitButton = document.getElementById('submit-button');
+const passwordElement = document.getElementById('password');
 
-	const hideWarningMessageAndDisableSubmit = (warningMessageElement) => {
+const clearWarningMessages = () => {
+	const warningMessages = document
+		.getElementById('warning-message-container')
+		.getElementsByTagName('P');
+	const numberOfMessages = warningMessages.length;
+
+	for (let index = 0; index < numberOfMessages; index++) {
+		warningMessages[index].classList.add('hidden');
+	}
+};
+
+const clearInputValue = (event) => {
+	event.target.value = '';
+};
+
+const enableSubmitButton = () => {
+	submitButton.disabled = false;
+};
+
+const disableSubmitButton = () => {
+	submitButton.disabled = true;
+};
+
+const validatePassword = () => {
+	const hideWarningMessage = (warningMessageElement) => {
 		document.getElementById(warningMessageElement).classList.toggle('hidden');
-		submitButton.disabled = true;
 	};
 
 	const checkPassword = (event) => {
 		if (event.target.value.length < 8) {
-			hideWarningMessageAndDisableSubmit('length');
+			hideWarningMessage('length');
+			disableSubmitButton();
 		}
 
 		const regExCheckNumber = /([0-9])/;
 		if (!regExCheckNumber.test(event.target.value)) {
-			hideWarningMessageAndDisableSubmit('number');
+			hideWarningMessage('number');
+			disableSubmitButton();
 		}
 
 		const regExCheckLowercase = /([a-z])/;
 		if (!regExCheckLowercase.test(event.target.value)) {
-			hideWarningMessageAndDisableSubmit('lowercase');
+			hideWarningMessage('lowercase');
+			disableSubmitButton();
 		}
 
 		const regExCheckUppercase = /([A-Z])/;
 		if (!regExCheckUppercase.test(event.target.value)) {
-			hideWarningMessageAndDisableSubmit('uppercase');
+			hideWarningMessage('uppercase');
+			disableSubmitButton();
 		}
-	};
-
-	const removeWarningMessages = () => {
-		const warningMessages = document
-			.getElementById('warning-message-container')
-			.getElementsByTagName('P');
-		const numberOfMessages = warningMessages.length;
-
-		for (let index = 0; index < numberOfMessages; index++) {
-			warningMessages[index].classList.add('hidden');
-		}
-	};
-
-	const clearInput = (event) => {
-		event.target.value = '';
-	};
-
-	const enableSubmitButton = () => {
-		submitButton.disabled = false;
 	};
 
 	passwordElement.addEventListener('change', checkPassword);
-	passwordElement.addEventListener('focus', clearInput);
+};
+
+const resetPasswordInput = () => {
+	passwordElement.addEventListener('focus', clearInputValue);
 	passwordElement.addEventListener('focus', enableSubmitButton);
-	passwordElement.addEventListener('focus', removeWarningMessages);
+	passwordElement.addEventListener('focus', clearWarningMessages);
 };
 
 validatePassword();
+resetPasswordInput();
