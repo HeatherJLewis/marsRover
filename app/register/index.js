@@ -24,11 +24,18 @@ const disableSubmitButton = () => {
 	submitButton.disabled = true;
 };
 
-const validatePassword = () => {
-	const showWarningMessage = (warningMessageElement) => {
-		document.getElementById(warningMessageElement).classList.toggle('hidden');
-	};
+const showWarningMessage = (warningMessageElement) => {
+	document.getElementById(warningMessageElement).classList.toggle('hidden');
+};
 
+const validatePasswordCharacters = (regex, warningType) => (event) => {
+	if (!regex.test(event.target.value)) {
+		showWarningMessage(warningType);
+		disableSubmitButton();
+	}
+};
+
+const validatePassword = () => {
 	const checkPassword = (event) => {
 		if (event.target.value.length < 8) {
 			showWarningMessage('length');
@@ -36,22 +43,13 @@ const validatePassword = () => {
 		}
 
 		const regExCheckNumber = /([0-9])/;
-		if (!regExCheckNumber.test(event.target.value)) {
-			showWarningMessage('number');
-			disableSubmitButton();
-		}
+		validatePasswordCharacters(regExCheckNumber, 'number')(event);
 
 		const regExCheckLowercase = /([a-z])/;
-		if (!regExCheckLowercase.test(event.target.value)) {
-			showWarningMessage('lowercase');
-			disableSubmitButton();
-		}
+		validatePasswordCharacters(regExCheckLowercase, 'lowercase')(event);
 
 		const regExCheckUppercase = /([A-Z])/;
-		if (!regExCheckUppercase.test(event.target.value)) {
-			showWarningMessage('uppercase');
-			disableSubmitButton();
-		}
+		validatePasswordCharacters(regExCheckUppercase, 'uppercase')(event);
 	};
 
 	passwordElement.addEventListener('change', checkPassword);
