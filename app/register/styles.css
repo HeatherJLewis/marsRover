@@ -6,7 +6,7 @@
 }
 body {
   margin: 0;
-  padding: 0;
+  padding-top: 50px;
   background-color: var(--main-color-one);
   background-size: cover;
   background-position: center;
@@ -21,8 +21,6 @@ h1 {
   color: var(--main-color-one);
   font-size: 500%;
   background-color: var(--main-color-two);
-  margin: 50px;
-  border-radius: 1em;
 }
 
 /* login page */
@@ -77,4 +75,41 @@ input[type="email"] {
 
 .login p a {
   color: var(--main-color-one);
+}
+
+.password-warning {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#navbar {
+  background-color: var(--main-color-one);
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#navbar a {
+  display: inline;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--main-color-two);
+}
+
+#navbar a:hover {
+  padding: 10px;
+  text-decoration: underline;
+  background-color: var(--main-color-two);
+  color: var(--main-color-one);
+}
+
+#navbar .active {
+  color: var(--main-color-one);
+  background-color: var(--main-color-two);
 }
