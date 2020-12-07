@@ -35,8 +35,8 @@ const validatePasswordCharacters = (regex, warningType) => (event) => {
 	}
 };
 
-const validatePassword = () => {
-	const checkPassword = (event) => {
+const activatePasswordValidation = () => {
+	const validatePassword = (event) => {
 		if (event.target.value.length < 8) {
 			showWarningMessage('length');
 			disableSubmitButton();
@@ -52,7 +52,7 @@ const validatePassword = () => {
 		validatePasswordCharacters(regExCheckUppercase, 'uppercase')(event);
 	};
 
-	passwordElement.addEventListener('change', checkPassword);
+	passwordElement.addEventListener('change', validatePassword);
 };
 
 const resetPasswordInput = () => {
@@ -61,5 +61,5 @@ const resetPasswordInput = () => {
 	passwordElement.addEventListener('focus', clearWarningMessages);
 };
 
-validatePassword();
+activatePasswordValidation();
 resetPasswordInput();
