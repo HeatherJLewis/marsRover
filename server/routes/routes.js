@@ -18,7 +18,7 @@ router.use('/register', express.static('app/register'));
 
 router.get('/apod', getImageAndExplanationForHomepage);
 router.post('/authenticate', checkForUser, setJwtOnAccessToken);
-router.post('/registration', registerUser);
+router.post('/registration', registerUser, setJwtOnAccessToken);
 router.get('/getUsername', getUsername);
 
 router.use('/user', [
