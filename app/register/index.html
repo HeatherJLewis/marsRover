@@ -25,16 +25,17 @@
                 <div class="form-input"  id="password-input">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
-                    <div id="warning-message-container">
+                    <div id="invalid-password-warning-container">
                         <p class="hidden" id="length">Your password is too short. It should have more than 8 characters.</p>
                         <p class="hidden" id="number">Your password needs to contain at least one number.</p>
                         <p class="hidden" id="lowercase">Your password needs to contain at least one lowercase character.</p>
                         <p class="hidden" id="uppercase">Your password needs to contain at least one uppercase character.</p>
                     </div>
                 </div>
-                <div class="form-input">
+                <div class="form-input" id="invalid-email-warning-container">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email">
+                    <p class="hidden" id="valid-email">Please use a valid email address.</p>
                 </div>
                 <div class="form-input" id="submit-form">
                     <input id="submit-button" type="submit" value="Register" >
