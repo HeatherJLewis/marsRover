@@ -11,16 +11,6 @@ const sequelizeDatabaseConnection = new Sequelize(
 	}
 );
 
-// Test Connection: node config/sequelizeDbConnection.js
-sequelizeDatabaseConnection
-	.authenticate()
-	.then(() => {
-		console.log('Success!');
-	})
-	.catch((err) => {
-		console.log(err);
-	});
-
 module.exports = {
 	sequelizeDatabaseConnection,
 };
