@@ -11,7 +11,6 @@ const checkForUser = (request, response, next) => {
 		},
 	})
 		.then((data) => {
-			console.log(data);
 			if (data[0]) {
 				next();
 			} else {
