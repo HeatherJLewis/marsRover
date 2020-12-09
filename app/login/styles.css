@@ -2,7 +2,7 @@
 
 :root {
   --main-color-one: #031d40;
-  --main-color-two: #e0e8ed;
+  --main-color-two: white;
 }
 body {
   margin: 0;
@@ -12,6 +12,15 @@ body {
   background-position: center;
   font-family: sans-serif;
   color: white;
+}
+
+#no-script {
+  background-color: var(--main-color-one);
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #navbar {
