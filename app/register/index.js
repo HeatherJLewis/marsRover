@@ -59,7 +59,7 @@ const activatePasswordValidation = () => {
 const activateEmailValidation = () => {
 	const validateEmail = (event) => {
 		// eslint-disable-next-line no-useless-escape
-		const regExCheckEmail = /@[a-zA-Z\-\.]+/g;
+		const regExCheckEmail = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/;
 		validateInput(regExCheckEmail, 'valid-email')(event);
 	};
 
