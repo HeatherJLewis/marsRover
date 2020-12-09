@@ -9,12 +9,6 @@ const Users = database.define('users', {
 	username: {
 		type: Sequelize.STRING,
 	},
-	surname: {
-		type: Sequelize.STRING,
-	},
-	firstname: {
-		type: Sequelize.STRING,
-	},
 	password: {
 		type: Sequelize.STRING,
 	},
@@ -22,7 +16,7 @@ const Users = database.define('users', {
 		type: Sequelize.STRING,
 	},
 	userId: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.STRING,
 		primaryKey: true,
 	},
 });
