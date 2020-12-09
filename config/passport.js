@@ -2,6 +2,7 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { PRIVATE_KEY } = require('../config/apiCredentials');
 const { Users } = require('../database/models');
+const logger = require('./logger');
 
 const extractJwt = (request) => {
 	if (request && request) {
@@ -27,13 +28,17 @@ const configurePassport = () => {
 					username: username,
 					password: password,
 				},
-			}).then((data) => {
-				if (data[0].exists) {
-					return done(null, jwt_payload);
-				} else {
-					return done(null, false);
-				}
-			});
+			})
+				.then((data) => {
+					if (data[0].exists) {
+						return done(null, jwt_payload);
+					} else {
+						return done(null, false);
+					}
+				})
+				.catch((error) => {
+					logger.warn(`${error.title}: ${error.message}`);
+				});
 		})
 	);
 };

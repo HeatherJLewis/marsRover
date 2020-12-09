@@ -1,3 +1,4 @@
+const logger = require('../../config/logger');
 const { Users } = require('../../database/models');
 
 const checkForUser = (request, response, next) => {
@@ -18,7 +19,7 @@ const checkForUser = (request, response, next) => {
 			}
 		})
 		.catch((error) => {
-			console.log(`${error.title}: ${error.message}`);
+			logger.warn(`${error.title}: ${error.message}`);
 		});
 };
 
