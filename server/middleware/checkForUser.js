@@ -1,11 +1,25 @@
+const logger = require('../../config/logger');
+const { Users } = require('../../database/models');
+
 const checkForUser = (request, response, next) => {
 	const { username, password } = request.body;
 
-	if (username === 'Bob' && password === 'cat') {
-		next();
-	} else {
-		response.send('No access for you!');
-	}
+	Users.findAll({
+		where: {
+			username: username,
+			password: password,
+		},
+	})
+		.then((data) => {
+			if (data[0]) {
+				next();
+			} else {
+				response.redirect('/login');
+			}
+		})
+		.catch((error) => {
+			logger.warn(`${error.title}: ${error.message}`);
+		});
 };
 
 module.exports = {
