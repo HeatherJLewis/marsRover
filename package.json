@@ -41,6 +41,7 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "shortid": "^2.2.16",
+    "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },
   "husky": {

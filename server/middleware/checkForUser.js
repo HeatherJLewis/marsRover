@@ -12,6 +12,7 @@ const checkForUser = (request, response, next) => {
 	})
 		.then((data) => {
 			if (data[0]) {
+				request.body.userId = data[0].dataValues.userId;
 				next();
 			} else {
 				response.redirect('/login');

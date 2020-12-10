@@ -21,6 +21,20 @@ const Users = database.define('users', {
 	},
 });
 
+const JwtIds = database.define('jwtIds', {
+	jti: {
+		type: Sequelize.STRING,
+		primaryKey: true,
+	},
+	exp: {
+		type: Sequelize.BIGINT,
+	},
+	userId: {
+		type: Sequelize.STRING,
+	},
+});
+
 module.exports = {
 	Users,
+	JwtIds,
 };
