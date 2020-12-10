@@ -17,10 +17,6 @@ router.use(express.static('./app/homepage'));
 router.use(express.static('./app/services'));
 router.use('/login', express.static('app/login'));
 router.use('/register', express.static('app/register'));
-router.use('/user', [
-	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
-	user,
-]);
 
 router.get('/apod', getImageAndExplanationForHomepage);
 router.get('/getUsername', authenticateUser, getUsername);
@@ -31,6 +27,12 @@ router.post(
 	insertJtiIntoDB,
 	setJwtOnAccessToken
 );
+
 router.post('/registration', registerUser, setJwtOnAccessToken);
+
+router.use('/user', [
+	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
+	user,
+]);
 
 module.exports = router;
