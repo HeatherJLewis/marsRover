@@ -8,6 +8,7 @@ const {
 	getImageAndExplanationForHomepage,
 } = require('../middleware/getPhotoAndTextForHomepage.js');
 const { registerUser } = require('../middleware/registerUser');
+const { insertJtiIntoDB } = require('../middleware/insertJtiIntoDB');
 
 const router = express.Router();
 
@@ -17,9 +18,14 @@ router.use('/login', express.static('app/login'));
 router.use('/register', express.static('app/register'));
 
 router.get('/apod', getImageAndExplanationForHomepage);
-router.post('/authenticate', checkForUser, setJwtOnAccessToken);
-router.post('/registration', registerUser, setJwtOnAccessToken);
 router.get('/getUsername', getUsername);
+router.post(
+	'/authenticate',
+	checkForUser,
+	insertJtiIntoDB,
+	setJwtOnAccessToken
+);
+router.post('/registration', registerUser, setJwtOnAccessToken);
 
 router.use('/user', [
 	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
