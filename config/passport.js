@@ -30,7 +30,7 @@ const configurePassport = () => {
 				},
 			})
 				.then((data) => {
-					if (data[0].exists) {
+					if (data.length > 0) {
 						return done(null, jwt_payload);
 					} else {
 						return done(null, false);
