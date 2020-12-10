@@ -7,6 +7,7 @@ const { setJwtOnAccessToken } = require('../middleware/setJwt');
 const {
 	getImageAndExplanationForHomepage,
 } = require('../middleware/getPhotoAndTextForHomepage.js');
+const { registerUser } = require('../middleware/registerUser');
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.use('/register', express.static('app/register'));
 
 router.get('/apod', getImageAndExplanationForHomepage);
 router.post('/authenticate', checkForUser, setJwtOnAccessToken);
+router.post('/registration', registerUser, setJwtOnAccessToken);
 router.get('/getUsername', getUsername);
 
 router.use('/user', [
