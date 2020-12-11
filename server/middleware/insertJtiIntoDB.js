@@ -1,13 +1,13 @@
 const { JwtIds } = require('../../database/models');
 const { v4: uuidv4 } = require('uuid');
 const logger = require('../../config/logger');
+const { JWT_EXPIRY_TIME_IN_SECONDS } = require('../../config/apiCredentials');
 
 const insertJtiIntoDB = (request, response, next) => {
 	const { userId } = request.body;
 	const jti = uuidv4();
-	const TEN_MINS_IN_SECONDS = 20 * 60;
 	const expiryTimeInSeconds =
-    Math.floor(Date.now() / 1000) + TEN_MINS_IN_SECONDS;
+    Math.floor(Date.now() / 1000) + JWT_EXPIRY_TIME_IN_SECONDS;
 
 	JwtIds.create({ jti, exp: expiryTimeInSeconds, userId }).catch((error) => {
 		logger.warn(`${error.title}: ${error.message}`);
