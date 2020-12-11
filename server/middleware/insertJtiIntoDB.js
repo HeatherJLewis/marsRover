@@ -6,14 +6,14 @@ const insertJtiIntoDB = (request, response, next) => {
 	const { userId } = request.body;
 	const jti = uuidv4();
 	const TEN_MINS_IN_SECONDS = 10 * 60;
-	const expiryTimeinSeconds =
+	const expiryTimeInSeconds =
     Math.floor(Date.now() / 1000) + TEN_MINS_IN_SECONDS;
 
-	JwtIds.create({ jti, exp: expiryTimeinSeconds, userId }).catch((error) => {
+	JwtIds.create({ jti, exp: expiryTimeInSeconds, userId }).catch((error) => {
 		logger.warn(`${error.title}: ${error.message}`);
 	});
 
-	request.body.exp = expiryTimeinSeconds;
+	request.body.exp = expiryTimeInSeconds;
 	request.body.jti = jti;
 
 	next();
