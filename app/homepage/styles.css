@@ -52,6 +52,62 @@ body {
   background-color: var(--main-color-two);
 }
 
+#logout-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modal-content {
+  background-color: var(--main-color-two);
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 1em;
+  color: var(--main-color-one);
+  height: 100px;
+}
+
+#logout-modal h3 {
+  color: var(--main-color-one);
+}
+
+.logout-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-buttons a {
+  display: inline;
+  color: var(--main-color-two);
+  background-color: var(--main-color-one);
+  border: none;
+  width: 40%;
+  padding: 10px;
+  margin: auto;
+  border-radius: 00.5em;
+  box-shadow: 10px 10px 15px 0px #8b8e90;
+  text-decoration: none;
+  text-align: center;
+}
+
+.logout-buttons a:hover {
+  cursor: pointer;
+  background-color: #23551b;
+  border: solid 3px var(--main-color-one);
+  color: var(--main-color-two);
+}
+
 h1 {
   text-align: center;
   border: none;
@@ -80,56 +136,4 @@ img {
 
 a {
   color: white;
-}
-
-/* login page */
-.login {
-  width: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--main-color-two);
-  border-radius: 1em;
-  padding: 30px;
-  margin-top: 100px;
-}
-
-.login h2 {
-  text-align: center;
-  font-size: 120%;
-  padding: 10px;
-}
-
-.form-input {
-  padding: 10px;
-  margin: 10px;
-}
-
-.form-input input[type="text"],
-[type="password"] {
-  border: none;
-  background: transparent;
-  border-bottom: solid 1px;
-}
-
-.form-input input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 150%;
-  border-radius: 0.5em;
-  background-color: var(--main-color-one);
-  color: var(--main-color-two);
-  border: none;
-  box-shadow: 10px 10px 15px 0px #8b8e90;
-}
-
-.form-input input[type="submit"]:hover {
-  cursor: pointer;
-  background-color: #23551b;
-  border: solid 3px var(--main-color-one);
-  color: var(--main-color-two);
-}
-
-.login p a {
-  color: var(--main-color-one);
 }
