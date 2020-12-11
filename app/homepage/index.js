@@ -65,6 +65,16 @@ const getPhotoOfTheDay = () => {
 		});
 };
 
+const showLogoutModal = () => {
+	const logoutLink = document.getElementById('logout-link');
+	logoutLink.addEventListener('click', (event) => {
+		event.preventDefault();
+		const logoutModal = document.getElementById('logout-modal');
+		logoutModal.style.display = 'block';
+	});
+};
+
+showLogoutModal();
 getPhotoOfTheDay();
 addNumberOfSols();
 addNumberOfEarthDays();
