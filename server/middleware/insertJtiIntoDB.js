@@ -5,7 +5,7 @@ const logger = require('../../config/logger');
 const insertJtiIntoDB = (request, response, next) => {
 	const { userId } = request.body;
 	const jti = uuidv4();
-	const TEN_MINS_IN_SECONDS = 10 * 60;
+	const TEN_MINS_IN_SECONDS = 20 * 60;
 	const expiryTimeInSeconds =
     Math.floor(Date.now() / 1000) + TEN_MINS_IN_SECONDS;
 
