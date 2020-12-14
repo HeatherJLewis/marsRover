@@ -1,5 +1,4 @@
 const express = require('express');
-const passport = require('passport');
 const user = require('./routers/user');
 const { checkForUser } = require('../middleware/checkForUser');
 const { setJwtOnAccessToken } = require('../middleware/setJwt');
@@ -10,6 +9,7 @@ const { registerUser } = require('../middleware/registerUser');
 const { insertJtiIntoDB } = require('../middleware/insertJtiIntoDB');
 const { getUsername } = require('../middleware/getUsername');
 const { authenticateUser } = require('../middleware/authenticateUser');
+const { userAuthenticate } = require('../middleware/authenticate');
 
 const router = express.Router();
 
@@ -35,9 +35,6 @@ router.post(
 	setJwtOnAccessToken
 );
 
-router.use('/user', [
-	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
-	user,
-]);
+router.use('/user', [userAuthenticate, user]);
 
 module.exports = router;
