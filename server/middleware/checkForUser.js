@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 const checkForUser = (request, response, next) => {
 	const { username, password } = request.body;
 
-	const passwordAndHashMatch = (data) => {
-		return bcrypt.compare(password, data[0].dataValues.hash);
+	const matchPasswordToStoredHash = (resultFromDatabaseQuery) => {
+		return bcrypt.compare(password, resultFromDatabaseQuery[0].dataValues.hash);
 	};
 
 	Users.findAll({
@@ -14,16 +14,16 @@ const checkForUser = (request, response, next) => {
 			username: username,
 		},
 	})
-		.then((data) => {
-			if (data.length > 0) {
-				request.body.userId = data[0].dataValues.userId;
-				return passwordAndHashMatch(data);
+		.then((resultFromDatabaseQuery) => {
+			if (resultFromDatabaseQuery.length > 0) {
+				request.body.userId = resultFromDatabaseQuery[0].dataValues.userId;
+				return matchPasswordToStoredHash(resultFromDatabaseQuery);
 			} else {
 				return false;
 			}
 		})
-		.then((result) => {
-			if (result) {
+		.then((matchesHashedPassword) => {
+			if (matchesHashedPassword) {
 				next();
 			} else {
 				response.redirect('/login');

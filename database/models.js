@@ -18,9 +18,6 @@ const Users = database.define('users', {
 	hash: {
 		type: Sequelize.STRING,
 	},
-	salt: {
-		type: Sequelize.STRING,
-	},
 	userId: {
 		type: Sequelize.STRING,
 		primaryKey: true,
