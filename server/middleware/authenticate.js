@@ -6,17 +6,19 @@ const userAuthenticate = (request, response, next) => {
 	const accessToken = request.cookies.access_token;
 	const { jti } = jwtDecode(accessToken);
 
-	JwtIds.findAll({ where: { jti: jti } }).then((data) => {
-		Users.findAll({ where: { userId: data[0].dataValues.userId } }).then(
-			(data) => {
-				Roles.findAll({ where: { roleId: data[0].dataValues.roleId } }).then(
-					(data) => {
-						console.log(data[0].dataValues.accessRole);
-					}
-				);
-			}
-		);
-	});
+	const getAdminRole = (jti) => {
+		JwtIds.findAll({ where: { jti: jti } }).then((data) => {
+			Users.findAll({ where: { userId: data[0].dataValues.userId } }).then(
+				(data) => {
+					Roles.findAll({ where: { roleId: data[0].dataValues.roleId } }).then(
+						(data) => {
+							request.body.accessRole = data[0].dataValues.accessRole;
+						}
+					);
+				}
+			);
+		});
+	};
 
 	passport.authenticate('jwt', (error, user) => {
 		if (error) {
@@ -25,6 +27,7 @@ const userAuthenticate = (request, response, next) => {
 		if (!user) {
 			return response.redirect('/login');
 		}
+		getAdminRole(jti);
 		next();
 	})(request, response, next);
 };
