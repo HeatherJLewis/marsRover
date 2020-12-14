@@ -7,7 +7,7 @@ const registerUser = (request, response, next) => {
 	const { username, password, emailAddress } = request.body;
 	const userId = shortid.generate();
 
-	Users.create({ username, password, emailAddress, userId })
+	Users.create({ username, emailAddress, userId })
 		.then(() => {
 			const saltRounds = 10;
 
