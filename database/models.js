@@ -15,6 +15,12 @@ const Users = database.define('users', {
 	emailAddress: {
 		type: Sequelize.STRING,
 	},
+	hash: {
+		type: Sequelize.STRING,
+	},
+	salt: {
+		type: Sequelize.STRING,
+	},
 	userId: {
 		type: Sequelize.STRING,
 		primaryKey: true,
