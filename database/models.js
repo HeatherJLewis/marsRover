@@ -22,6 +22,9 @@ const Users = database.define('users', {
 		type: Sequelize.STRING,
 		primaryKey: true,
 	},
+	roleId: {
+		type: Sequelize.INTEGER,
+	},
 });
 
 const JwtIds = database.define('jwtIds', {
@@ -37,7 +40,18 @@ const JwtIds = database.define('jwtIds', {
 	},
 });
 
+const Roles = database.define('roles', {
+	roleId: {
+		type: Sequelize.INTEGER,
+		primaryKey: true,
+	},
+	accessRole: {
+		type: Sequelize.STRING,
+	},
+});
+
 module.exports = {
 	Users,
 	JwtIds,
+	Roles,
 };
