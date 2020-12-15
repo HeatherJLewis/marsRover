@@ -10,19 +10,20 @@ const registerUser = (request, response, next) => {
 	Users.create({ username, emailAddress, userId })
 		.then(() => {
 			const saltRounds = 10;
-
-			bcrypt.hash(password, saltRounds, (error, hash) => {
-				Users.update(
-					{ hash: hash },
-					{
-						where: {
-							username: username,
-							userId: userId,
-						},
-					}
-				);
-			});
-
+			return bcrypt.hash(password, saltRounds);
+		})
+		.then((hash) => {
+			return Users.update(
+				{ hash: hash },
+				{
+					where: {
+						username: username,
+						userId: userId,
+					},
+				}
+			);
+		})
+		.then(() => {
 			request.body.userId = userId;
 			next();
 		})
