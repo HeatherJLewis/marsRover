@@ -1,25 +1,11 @@
 const passport = require('passport');
 const jwtDecode = require('jwt-decode');
 const { Users, JwtIds, Roles } = require('../../database/models');
+const logger = require('../../config/logger');
 
 const authenticate = (request, response, next) => {
 	const accessToken = request.cookies.access_token;
 	const { jti } = jwtDecode(accessToken);
-
-	const getAccessRole = () => {
-		JwtIds.findAll({ where: { jti: jti } }).then((data) => {
-			Users.findAll({ where: { userId: data[0].dataValues.userId } }).then(
-				(data) => {
-					Roles.findAll({ where: { roleId: data[0].dataValues.roleId } }).then(
-						(data) => {
-							// console.log(data[0].dataValues.accessRole)
-							return data[0].dataValues.accessRole;
-						}
-					);
-				}
-			);
-		});
-	};
 
 	passport.authenticate('jwt', (error, user) => {
 		if (error) {
@@ -28,9 +14,18 @@ const authenticate = (request, response, next) => {
 		if (!user) {
 			return response.redirect('/login');
 		}
-		getAccessRole();
-		request.body.accessRole = 'admin';
-		next();
+		JwtIds.findAll({ where: { jti: jti } })
+			.then((data) => {
+				return Users.findAll({ where: { userId: data[0].dataValues.userId } });
+			})
+			.then((data) => {
+				return Roles.findAll({ where: { roleId: data[0].dataValues.roleId } });
+			})
+			.then((data) => {
+				request.body.accessRole = data[0].dataValues.accessRole;
+				next();
+			})
+			.catch((error) => logger.warn(`${error}`));
 	})(request, response, next);
 };
 
