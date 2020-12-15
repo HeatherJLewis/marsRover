@@ -1,6 +1,5 @@
 const checkIfAdmin = (request, response, next) => {
 	const { accessRole } = request.body;
-	console.log(accessRole);
 	if (accessRole === 'admin' || accessRole === 'superUser') {
 		next();
 	} else {
@@ -11,7 +10,6 @@ const checkIfAdmin = (request, response, next) => {
 
 const checkIfSuperUser = (request, response, next) => {
 	const { accessRole } = request.body;
-	console.log(accessRole);
 	if (accessRole === 'superUser') {
 		next();
 	} else {
