@@ -4,7 +4,7 @@ const checkIfAdmin = (request, response, next) => {
 		next();
 	} else {
 		response.status(403);
-		response.send('No dashboard for you'); //generic message
+		response.send('Access to this area is restricted');
 	}
 };
 
@@ -14,7 +14,7 @@ const checkIfSuperUser = (request, response, next) => {
 		next();
 	} else {
 		response.status(403);
-		response.send('No super dashboard for you');
+		response.send('Access to this area is restricted');
 	}
 };
 
