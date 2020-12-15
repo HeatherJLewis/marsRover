@@ -8,9 +8,10 @@ const {
 const { registerUser } = require('../middleware/registerUser');
 const { insertJtiIntoDB } = require('../middleware/insertJtiIntoDB');
 const { getUsername } = require('../middleware/getUsername');
-const { authenticateUser } = require('../middleware/authenticateUser');
-const { userAuthenticate } = require('../middleware/authenticate');
-const { checkAccessRole } = require('../middleware/checkAccessRole');
+const {
+	authenticateUserForUsername,
+} = require('../middleware/authenticateUserForUsername');
+const { authenticate } = require('../middleware/authenticate');
 const router = express.Router();
 
 router.use(express.static('./app/homepage'));
@@ -19,7 +20,7 @@ router.use('/login', express.static('app/login'));
 router.use('/register', express.static('app/register'));
 
 router.get('/apod', getImageAndExplanationForHomepage);
-router.get('/getUsername', authenticateUser, getUsername);
+router.get('/getUsername', authenticateUserForUsername, getUsername);
 
 router.post(
 	'/authenticate',
@@ -35,6 +36,6 @@ router.post(
 	setJwtOnAccessToken
 );
 
-router.use('/user', [userAuthenticate, checkAccessRole, user]);
+router.use('/user', [authenticate, user]);
 
 module.exports = router;

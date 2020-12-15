@@ -2,7 +2,7 @@ const passport = require('passport');
 const jwtDecode = require('jwt-decode');
 const { Users, JwtIds, Roles } = require('../../database/models');
 
-const userAuthenticate = (request, response, next) => {
+const authenticate = (request, response, next) => {
 	const accessToken = request.cookies.access_token;
 	const { jti } = jwtDecode(accessToken);
 
@@ -28,12 +28,10 @@ const userAuthenticate = (request, response, next) => {
 		if (!user) {
 			return response.redirect('/login');
 		}
-		getAccessRole().then(() => {
-			request.body.accessRole = 'admin';
-		});
-
+		getAccessRole();
+		request.body.accessRole = 'admin';
 		next();
 	})(request, response, next);
 };
 
-module.exports = { userAuthenticate };
+module.exports = { authenticate };

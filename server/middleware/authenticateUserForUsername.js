@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-const authenticateUser = (request, response, next) => {
+const authenticateUserForUsername = (request, response, next) => {
 	passport.authenticate('jwt', (error, user) => {
 		if (error) {
 			return next(error);
@@ -12,4 +12,4 @@ const authenticateUser = (request, response, next) => {
 	})(request, response, next);
 };
 
-module.exports = { authenticateUser };
+module.exports = { authenticateUserForUsername };
