@@ -28,7 +28,12 @@ router.post(
 	setJwtOnAccessToken
 );
 
-router.post('/registration', registerUser, setJwtOnAccessToken);
+router.post(
+	'/registration',
+	registerUser,
+	insertJtiIntoDB,
+	setJwtOnAccessToken
+);
 
 router.use('/user', [
 	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
