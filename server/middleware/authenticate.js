@@ -6,13 +6,14 @@ const userAuthenticate = (request, response, next) => {
 	const accessToken = request.cookies.access_token;
 	const { jti } = jwtDecode(accessToken);
 
-	const getAdminRole = (jti) => {
+	const getAccessRole = () => {
 		JwtIds.findAll({ where: { jti: jti } }).then((data) => {
 			Users.findAll({ where: { userId: data[0].dataValues.userId } }).then(
 				(data) => {
 					Roles.findAll({ where: { roleId: data[0].dataValues.roleId } }).then(
 						(data) => {
-							request.body.accessRole = data[0].dataValues.accessRole;
+							// console.log(data[0].dataValues.accessRole)
+							return data[0].dataValues.accessRole;
 						}
 					);
 				}
@@ -27,7 +28,10 @@ const userAuthenticate = (request, response, next) => {
 		if (!user) {
 			return response.redirect('/login');
 		}
-		getAdminRole(jti);
+		getAccessRole().then(() => {
+			request.body.accessRole = 'admin';
+		});
+
 		next();
 	})(request, response, next);
 };
